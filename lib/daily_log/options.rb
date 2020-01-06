@@ -29,6 +29,9 @@ module DailyLog
                                 "(Even when it's not today's date)") do
           hash[:edit] = true
         end
+        opts.on("", "--path", "Show the path for the given entry file") do
+          hash[:path] = true
+        end
         opts.on("-p", "--print", "Print the entry to STDOUT",
                                 "(Even when it's today's date)") do
           hash[:print] = true

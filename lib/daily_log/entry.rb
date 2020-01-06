@@ -1,26 +1,37 @@
 # frozen_string_literal: true
 
 module DailyLog
+  # One Daily Log journal Entry
+  #
   class Entry
     require 'erb'
     require "fileutils"
 
+    ##
+    # The Day this Entry is for
     attr_reader :day
 
+    ##
+    # The Pathname of the file to the Entry
     attr_reader :pathname
 
+
+    ##
+    # Default path for the daily entry Markdown template
     TEMPLATE_PATH = File.join(File.dirname(__FILE__), '..', '..',
                               'lib/templates/daily_log/entry.md.erb')
 
-    def self.latest
-      Dir["#{Pathname.dirname}/**/*.md"].last
-    end
 
+    # Create a new Entry
+    #
+    # day - The Day we're creating a new Entry for
     def initialize(day)
       @day = day
       @pathname = Pathname.new(day.date)
     end
 
+    # Print the contents of this Entry to STDOUT. If no entry exists, print a
+    # warning.
     def print
       if exists?
         puts file.read
@@ -29,6 +40,8 @@ module DailyLog
       end
     end
 
+    # Open the Entry file in the text editor. If one doens't already exist,
+    # create it for this Day
     def open
       ensure!
       open_in_editor
