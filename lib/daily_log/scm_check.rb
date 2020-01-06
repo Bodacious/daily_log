@@ -25,7 +25,7 @@ module DailyLog
     end
 
     def has_ignored_daily_logs?
-      File.read(".gitignore").include?(DailyLog::DIRNAME)
+      File.read(".gitignore").include?(DailyLog::Pathname::dirname)
     end
 
   end

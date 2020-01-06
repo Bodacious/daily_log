@@ -2,33 +2,21 @@
 
 
 module DailyLog
-  require "scm_check"
-  require "day"
+  require_relative "daily_log/options"
+  require_relative "daily_log/latest_date"
+  require_relative "daily_log/scm_check"
+  require_relative "daily_log/day"
+  require_relative "daily_log/entry"
+  require_relative "daily_log/pathname"
 
-  DIRNAME = ".daily_logs"
-  DATE_FORMAT  = "%Y-%m-%D"
-  
   module_function
 
-  def scm_check!
-    ScmCheck.new.perform!
-  end
-
-  def open(**options)
-    @day.open
-  end
-
-  def print
-    @day.print
-  end
-
-  def open_or_print(**options)
-    @day = Day.new(options)
-    if @day.today? or options[:edit]
-      open
-    else
-      print
-    end
+  def open_or_print(options = {})
+    @day   = Day.new(options[:date])
+    @entry = Entry.new(@day)
+    puts "options: #{options}"
+    @entry.print if options[:print]
+    @entry.open  if options[:edit]
   end
 
 end

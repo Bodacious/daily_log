@@ -4,6 +4,10 @@ source "https://rubygems.org"
 
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
-gem "irb", "~> 1.2"
+group :development do
+  gem "irb", "~> 1.2"
 
-gem "slop", "~> 4.7"
+  gem "rspec", "~> 3.9"
+
+  gem "byebug"
+end
