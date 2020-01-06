@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+
+$LOAD_PATH << "lib"
+
+require "daily_log"
+require "optparse"
+require "optparse/date"
+require "date"
+DailyLog.scm_check!
+
+options = {}
+default_options = { date: Date.today }
+
+OptionParser.new do |opts|
+  opts.banner = "Usage: dl [options]"
+  opts.on("-d", "--date=DATE", Date, "Date to show string for") do |date|
+    options[:date] = date
+  end
+  opts.on("-l", "--last", "Show the last daily log entry") do |dh|
+    options[:date] = find_date_of_last_entry
+  end
+end.parse!
+
+options.merge!(default_options)
+DailyLog.open_or_print(options)
