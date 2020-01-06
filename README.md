@@ -20,7 +20,9 @@ alias /usr/local/bin/daily_log /usr/local/daily_log/bin/daily_log
 
 At the end of a working day, you run from your console
 
+``` bash
 $ daily_log
+```
 
 This opens a text file in your editor that looks like this:
 
