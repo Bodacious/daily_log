@@ -1,11 +1,17 @@
 # frozen_string_literal: true
 
 module DailyLog
+
+  # Parses options passed into the command-line and returns the desired values
   class Options
     require "optparse"
     require "optparse/date"
     require "date"
 
+    ##
+    # The options as a Hash
+    #
+    # Returns Hash
     attr_reader :hash
 
     alias to_hash hash
@@ -15,10 +21,14 @@ module DailyLog
       parse
     end
 
+    # The default options
+    #
+    # Returns Hash
     def defaults
       { date: Date.today }
     end
 
+    # Parse the input options and update the {hash} with desired values.
     def parse
       OptionParser.new do |opts|
         opts.banner = "Usage: dl [options]"
@@ -49,4 +59,5 @@ module DailyLog
       hash[:edit]  = (hash[:date] == Date.today) unless hash.key?(:edit)
     end
   end
+  
 end
