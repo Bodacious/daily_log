@@ -1,3 +1,8 @@
+PATH
+  remote: .
+  specs:
+    daily_log (0.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -32,7 +37,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bundler (~> 1.17)
   byebug
+  daily_log!
   irb (~> 1.2)
   rake
   rspec (~> 3.9)
