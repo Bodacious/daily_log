@@ -31,7 +31,7 @@ RSpec.describe DailyLog::Entry do
       end
 
       it 'prints the file content' do
-        expect { subject }.to output(/template/i).to_stdout
+        expect { subject }.to output(/Daily Entry/i).to_stdout
       end
     end
 
