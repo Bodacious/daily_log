@@ -4,16 +4,14 @@ Provides a simple framework for keeping a daily log of the work you do on a proj
 
 ## Usage
 
-Call the binary `daily_log` to open today's log.
+Call the binary `dl` to open today's log.
 
 Pass in the option `--help` to see the other options available.
 
 ## Installation
 
 ``` bash
-cd /usr/local
-git clone https://github.com/KatanaCode/daily_log.git
-alias /usr/local/bin/daily_log /usr/local/daily_log/bin/daily_log
+gem install daily_log
 ```
 
 ## Example
@@ -21,7 +19,7 @@ alias /usr/local/bin/daily_log /usr/local/daily_log/bin/daily_log
 At the end of a working day, you run from your console
 
 ``` bash
-$ daily_log
+$ dl
 ```
 
 This opens a text file in your editor that looks like this:
@@ -81,7 +79,7 @@ Some time has passed since you last worked on the project. You aren't quite sure
 You type:
 
 ```
-$ daily_log -l # short for daily_log --last
+$ dl -l # short for dl --last
 ```
 
 ...to print out your log to the console.
