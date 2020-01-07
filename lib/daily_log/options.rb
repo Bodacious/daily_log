@@ -16,10 +16,7 @@ module DailyLog
     end
 
     def defaults
-      _defaults = { date: Date.today }
-      _defaults[:print] = _defaults[:date] != Date.today
-      _defaults[:edit]  = _defaults[:date] == Date.today
-      _defaults
+      { date: Date.today }
     end
 
     def parse
@@ -48,6 +45,8 @@ module DailyLog
           end
         end
       end.parse!
+      hash[:print] = (hash[:date] != Date.today) unless hash.key?(:print)
+      hash[:edit]  = (hash[:date] == Date.today) unless hash.key?(:edit)
     end
   end
 end
